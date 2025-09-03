@@ -21,13 +21,12 @@ const Checkbox = ({ checked, style, onPress, ...props }: CheckboxProps) => {
   const animatedContainerStyles = useAnimatedStyle(() => ({
     backgroundColor: checked || isSelected ? COLORS.elements.active : "#fff",
   }));
-  console.log(checked, isSelected);
+
   const handlePress = () => {
-    console.log("LLLPP", !checked);
     checked === undefined && setIsSelected(!isSelected);
     onPress?.(!checked);
   };
-  console.log("checked", checked);
+
   return (
     <Pressable
       activeOpacity={0.6}

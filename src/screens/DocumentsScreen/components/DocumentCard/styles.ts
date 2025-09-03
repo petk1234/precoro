@@ -72,7 +72,6 @@ export default StyleSheet.create({
     borderRadius: 12,
   },
   statusText: {
-    color: "#ffffff",
     fontSize: 12,
     fontWeight: "600",
   },

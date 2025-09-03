@@ -8,7 +8,7 @@ interface Props {
   secured?: boolean;
   placeholder?: string;
   label?: string;
-  error?: string;
+  error?: string | null;
 }
 
 const CustomTextInput = ({
@@ -18,7 +18,7 @@ const CustomTextInput = ({
   label,
   error,
 }: Props) => {
-  const [isHidden, setIHidden] = useState(false);
+  const [isHidden, setIHidden] = useState(!!secured);
   return (
     <View style={styles.container}>
       {label && <Text style={styles.label}>{label}</Text>}

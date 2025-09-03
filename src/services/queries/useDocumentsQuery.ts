@@ -34,6 +34,5 @@ export const useDocumentsQuery = (documentType: `${DocumentTypes}`) => {
     },
     enabled: !!useAuth().token,
   });
-  console.log("filters.optionsChoosed", filters.optionsChoosed);
   return { filters, documents, error, isLoading, updateFilters, refetch };
 };

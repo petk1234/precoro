@@ -26,4 +26,5 @@ export interface DocumentsListStackParams {
   documentType: DocumentTypesStrings;
   parentNavigator?: string;
   nextScreen?: string;
+  title: string;
 }

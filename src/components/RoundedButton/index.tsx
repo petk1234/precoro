@@ -9,8 +9,11 @@ interface Props {
 
 const RoundedButton = ({ children, disabled = false, onPress }: Props) => {
   return (
-    <TouchableOpacity onPress={onPress}>
-      <View style={[styles.buttonContainer, disabled && styles.disabled]}>
+    <TouchableOpacity
+      style={[styles.buttonContainer, disabled && styles.disabled]}
+      onPress={() => !disabled && onPress()}
+    >
+      <View>
         <Text style={styles.text}>{children}</Text>
       </View>
     </TouchableOpacity>

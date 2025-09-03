@@ -2,7 +2,7 @@ import { NestedTreeNode, Option as OptionType } from "../../../../types";
 import styles from "../Locations/styles";
 import { useQuery } from "@tanstack/react-query";
 import { apiService, buildDepartmentTree } from "../../../../services/api";
-import NestedOption from "../common/NestedOption";
+import NestedOption from "../../../../components/CustomSelector/common/NestedOption";
 import { View } from "react-native";
 
 interface Props {
@@ -19,7 +19,6 @@ const Departments = ({ selectedDepartment, onSelect }: Props) => {
     const department = departments?.data.find(
       (department) => department.id === id
     );
-    console.log(department);
     if (department) {
       onSelect({ id: department.id, value: department.name });
     }

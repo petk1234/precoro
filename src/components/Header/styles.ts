@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { COLORS } from "../../theme/colors";
 
 export default StyleSheet.create({
   container: {
@@ -13,10 +14,14 @@ export default StyleSheet.create({
   title: {
     fontWeight: 700,
     fontSize: 20,
+    color: COLORS.main.primary[900],
   },
   leftItem: {
     width: "15%",
     height: "100%",
+    display: "flex",
+    justifyContent: "center",
+    padding: 10,
   },
   rightItem: {
     width: "15%",

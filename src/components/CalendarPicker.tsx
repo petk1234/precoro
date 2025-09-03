@@ -29,7 +29,16 @@ export const CalendarPicker = ({
           todayTextColor: "#007AFF",
           selectedDayBackgroundColor: "#3D5AFE",
           selectedDayTextColor: "#fff",
+          dayTextColor: "#1D2452",
           arrowColor: "#24324B",
+          arrowStyle: {
+            backgroundColor: "#F4F4F6",
+            borderRadius: 8,
+            width: 30,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          },
         }}
         markedDates={
           initialDate ? { [initialDate]: { selected: true } } : undefined

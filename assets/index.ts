@@ -10,6 +10,10 @@ import CheckIc from "./check.svg";
 import Back from "./back.svg";
 import Selected from "./selected.svg";
 import TopArr from "./top-arr.svg";
+import Calendar from "./calendar.svg";
+import Plus from "./plus.svg";
+import Lines from "./lines.svg";
+import LogoExtended from "./logo-expandable.svg";
 
 export {
   SecureEye,
@@ -24,4 +28,8 @@ export {
   Back,
   Selected,
   TopArr,
+  Calendar,
+  Plus,
+  Lines,
+  LogoExtended,
 };

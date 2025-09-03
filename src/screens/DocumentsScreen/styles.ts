@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { COLORS } from "../../theme/colors";
 
 export default StyleSheet.create({
   container: {
@@ -42,29 +43,6 @@ export default StyleSheet.create({
     fontSize: 16,
     color: "#666666",
   },
-  errorContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 20,
-  },
-  errorText: {
-    fontSize: 16,
-    color: "#666666",
-    marginBottom: 20,
-    textAlign: "center",
-  },
-  retryButton: {
-    backgroundColor: "#007AFF",
-    paddingHorizontal: 20,
-    paddingVertical: 12,
-    borderRadius: 8,
-  },
-  retryButtonText: {
-    color: "#ffffff",
-    fontSize: 16,
-    fontWeight: "600",
-  },
   fab: {
     position: "absolute",
     bottom: 20,
@@ -72,7 +50,7 @@ export default StyleSheet.create({
     width: 56,
     height: 56,
     borderRadius: 28,
-    backgroundColor: "#007AFF",
+    backgroundColor: COLORS.elements.active,
     justifyContent: "center",
     alignItems: "center",
     shadowColor: "#000",
@@ -84,9 +62,11 @@ export default StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
-  fabText: {
-    color: "#ffffff",
-    fontSize: 24,
-    fontWeight: "bold",
+  filterSearch: {
+    height: 120,
+    backgroundColor: "#fff",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

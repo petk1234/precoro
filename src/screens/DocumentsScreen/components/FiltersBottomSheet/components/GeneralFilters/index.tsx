@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import SpecificFilters from "../SpecificFilters";
 import { Filters } from "../../../../../../types";
 import { useFilters } from "../../../../../../contexts/FiltersContext";
+import RoundedButton from "../../../../../../components/RoundedButton";
 
 const FILTER_OPTIONS: `${Filters}`[] = ["Status", "Locations", "Creators"];
 

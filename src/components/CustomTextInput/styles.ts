@@ -21,6 +21,7 @@ export default StyleSheet.create({
     borderColor: COLORS.borders.secondary,
     padding: 10,
     borderRadius: 12,
+    backgroundColor: "#fff",
   },
   secureEye: {
     position: "absolute",

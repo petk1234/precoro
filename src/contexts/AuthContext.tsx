@@ -1,9 +1,15 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { User } from "../types";
 import { apiService } from "../services/api";
 
 interface AuthContextType {
+  error: string | null;
   token: string | null;
   isLoading: boolean;
   login: (email: string, password: string) => Promise<void>;
@@ -16,7 +22,7 @@ export const useAuth = () => {
   const context = useContext(AuthContext);
   if (context === undefined) {
     return {
-      user: null,
+      error: null,
       token: null,
       isLoading: false,
       login: async () => {},
@@ -33,6 +39,7 @@ interface AuthProviderProps {
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [token, setToken] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     loadStoredAuth();
@@ -67,10 +74,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       setToken(response.token);
       apiService.setToken(response.token);
 
+      if (error) {
+        setError(null);
+      }
+
       await AsyncStorage.setItem("authToken", response.token);
     } catch (error) {
-      console.error("Login error:", error);
-      throw error;
+      setError("No account with this email");
     }
   };
 
@@ -85,6 +95,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   };
 
   const value: AuthContextType = {
+    error,
     token,
     isLoading,
     login,

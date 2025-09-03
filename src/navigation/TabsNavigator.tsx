@@ -4,23 +4,30 @@ import { OrdersScreens, TabsScreens } from "./config";
 import Home from "../screens/Home";
 import { DocumentsTab, HomeTab } from "../../assets";
 import { DocumentsStackNavigator } from "./StacksNavigator";
+import {
+  getFocusedRouteNameFromRoute,
+  useRoute,
+} from "@react-navigation/native";
 
 const Tab = createBottomTabNavigator();
 
 const DocumentsTabNavigator = () => {
+  const route = useRoute();
   return (
     <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarActiveTintColor: COLORS.elements.active,
-        tabBarInactiveTintColor: COLORS.elements.inactive,
-        tabBarStyle: {
-          backgroundColor: "#fff",
-          borderTopWidth: 1,
-          borderTopColor: COLORS.borders.primary,
-          height: 84,
-        },
-        headerShown: false,
-      })}
+      screenOptions={({ route }) => {
+        return {
+          tabBarActiveTintColor: COLORS.elements.active,
+          tabBarInactiveTintColor: COLORS.elements.inactive,
+          tabBarStyle: {
+            backgroundColor: "#fff",
+            borderTopWidth: 1,
+            borderTopColor: COLORS.borders.primary,
+            height: 84,
+          },
+          headerShown: false,
+        };
+      }}
     >
       <Tab.Screen
         name={TabsScreens.HOME}

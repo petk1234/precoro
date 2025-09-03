@@ -1,11 +1,12 @@
 import { StyleSheet } from "react-native";
+import { COLORS } from "../../theme/colors";
 
 export default StyleSheet.create({
   label: {
-    fontSize: 16,
-    fontWeight: "600",
-    color: "#1a1a1a",
+    fontSize: 14,
+    color: COLORS.main.primary[900],
     marginBottom: 8,
+    fontWeight: "600",
   },
   input: {
     borderWidth: 1,
@@ -22,7 +23,7 @@ export default StyleSheet.create({
     borderRadius: 12,
     borderWidth: 1,
     borderColor: "#E5E7EB",
-    backgroundColor: "#F9FAFB",
+    backgroundColor: "#fff",
     paddingHorizontal: 16,
     alignItems: "center",
     flexDirection: "row",
@@ -77,5 +78,8 @@ export default StyleSheet.create({
     color: "#ffffff",
     fontSize: 16,
     fontWeight: "600",
+  },
+  required: {
+    color: COLORS.main.red[900],
   },
 });

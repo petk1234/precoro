@@ -1,15 +1,18 @@
-import { Text, TouchableOpacity } from "react-native";
-import { CustomBottomSheet } from "../../../../components/CustomBottomSheet";
+import { Text, TouchableOpacity, View } from "react-native";
+import { CustomBottomSheet } from "../CustomBottomSheet";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./styles";
+import { TopArr } from "../../../assets";
+import { COLORS } from "../../theme/colors";
 
 interface CustomSelectorProps {
   label: string;
   value?: string;
-  layout: React.ReactNode;
+  layout?: React.ReactNode;
   required?: boolean;
   children: React.ReactNode;
+  placeholder?: string;
 }
 
 const CustomSelector = ({
@@ -18,6 +21,7 @@ const CustomSelector = ({
   layout,
   required,
   children,
+  placeholder,
 }: CustomSelectorProps) => {
   const [open, setOpen] = useState(false);
   const bottomSheetRef = useRef<BottomSheetModal>(null);
@@ -39,18 +43,20 @@ const CustomSelector = ({
     }
   }, [open]);
   return (
-    <>
+    <View>
       <Text style={styles.label}>
-        {label} {required && <Text>*</Text>}
+        {label} {required && <Text style={styles.required}>*</Text>}
       </Text>
       <TouchableOpacity
-        style={[styles.selectInput, value ? styles.inputFilled : undefined]}
+        style={[styles.selectInput, open ? styles.inputFilled : undefined]}
         onPress={handleOpen}
       >
         <Text style={[styles.selectText, value ? styles.value : undefined]}>
-          {value}
+          {value || placeholder}
         </Text>
-        <Text style={styles.chevron}>▾</Text>
+        <View style={{ transform: [{ rotate: open ? "0deg" : "180deg" }] }}>
+          <TopArr fill={COLORS.main.secondary[600]} />
+        </View>
       </TouchableOpacity>
       <CustomBottomSheet
         ref={bottomSheetRef}
@@ -60,7 +66,7 @@ const CustomSelector = ({
       >
         {children}
       </CustomBottomSheet>
-    </>
+    </View>
   );
 };
 

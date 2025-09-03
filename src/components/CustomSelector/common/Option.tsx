@@ -1,7 +1,7 @@
 import { Text, TouchableOpacity, View } from "react-native";
 import styles from "./styles";
 import { memo } from "react";
-import { Selected } from "../../../../../assets";
+import { Selected } from "../../../../assets";
 
 interface Props {
   text: string;

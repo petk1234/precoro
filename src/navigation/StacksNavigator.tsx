@@ -25,6 +25,7 @@ export const OrdersStackNavigator = () => {
             documentType={DocumentTypes.purchaseOrders}
             parentNavigator={OrdersScreens.ORDERS_STACK}
             nextScreen={OrdersScreens.ORDERS_CREATE}
+            title={"Orders"}
           />
         )}
       />
@@ -37,6 +38,7 @@ export const OrdersStackNavigator = () => {
           <CreateDocumentScreen
             {...props}
             documentType={DocumentTypes.purchaseOrders}
+            title={"Create Order"}
           />
         )}
       />
@@ -58,6 +60,7 @@ export const RequisitsStackNavigator = () => {
             documentType={DocumentTypes.purchaseRequisitions}
             parentNavigator={RequisitsScreens.REQUISITS_STACK}
             nextScreen={RequisitsScreens.REQUISIT_CREATE}
+            title={"Purchase Requisitions"}
           />
         )}
       />
@@ -70,6 +73,7 @@ export const RequisitsStackNavigator = () => {
           <CreateDocumentScreen
             {...props}
             documentType={DocumentTypes.purchaseRequisitions}
+            title={"Create Purchase Requisition"}
           />
         )}
       />

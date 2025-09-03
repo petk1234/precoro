@@ -1,11 +1,20 @@
-import { Text, TouchableWithoutFeedback, View } from "react-native";
+import {
+  Text,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View,
+} from "react-native";
 import styles from "./styles";
+import { Back } from "../../../assets";
+import { COLORS } from "../../theme/colors";
+import { useNavigation } from "@react-navigation/native";
 
 interface Props {
   renderLeftButton?: React.ReactNode;
   renderRightButton?: React.ReactNode;
   title: string;
   customStyles?: Object;
+  goBack?: boolean;
 }
 
 const Header = ({
@@ -13,11 +22,21 @@ const Header = ({
   renderRightButton,
   title,
   customStyles,
+  goBack,
 }: Props) => {
+  const navigation = useNavigation();
+  const renderGoBack = () => (
+    <TouchableOpacity onPress={navigation.goBack}>
+      {" "}
+      <Back fill={COLORS.elements.active} />
+    </TouchableOpacity>
+  );
   return (
     <View style={styles.container}>
       <TouchableWithoutFeedback>
-        {renderLeftButton ? renderLeftButton : <View style={styles.leftItem} />}
+        <View style={styles.leftItem}>
+          {renderLeftButton || (goBack && renderGoBack())}
+        </View>
       </TouchableWithoutFeedback>
       <Text style={[styles.title, customStyles && customStyles]}>{title}</Text>
       <TouchableWithoutFeedback>

@@ -2,7 +2,7 @@ import { Text, TouchableOpacity, View } from "react-native";
 import { useFiltersQuery } from "../../../../services/queries/useFiltersQuery";
 import { Filters, Option as OptionType } from "../../../../types";
 import styles from "./styles";
-import Option from "../common/Option";
+import Option from "../../../../components/CustomSelector/common/Option";
 
 interface Props {
   selectedLocation: OptionType;

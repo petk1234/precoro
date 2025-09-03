@@ -6,13 +6,12 @@ import {
   TouchableOpacity,
   RefreshControl,
   SafeAreaView,
-  Modal,
 } from "react-native";
 import { Document } from "../../types";
 import { DocumentCard } from "./components/DocumentCard";
 import { StatusesBar } from "./components/StatusesBar";
 import Header from "../../components/Header/index";
-import { Filters } from "../../../assets";
+import { Filters, Plus } from "../../../assets";
 import { useNavigation } from "@react-navigation/native";
 import { DocumentsListStackParams } from "../../navigation/config";
 import styles from "./styles";
@@ -26,6 +25,7 @@ export const DocumentsScreen = ({
   documentType,
   parentNavigator,
   nextScreen,
+  title,
 }: DocumentsListStackParams) => {
   const navigation = useNavigation<any>();
   const [showFiltersSheet, setShowFiltersSheet] = useState(false);
@@ -76,29 +76,26 @@ export const DocumentsScreen = ({
     }
   }, [showFiltersSheet]);
 
-  if (error) {
-    return (
-      <View style={styles.errorContainer}>
-        <Text style={styles.errorText}>Помилка завантаження документів</Text>
-        <TouchableOpacity style={styles.retryButton} onPress={() => refetch()}>
-          <Text style={styles.retryButtonText}>Спробувати знову</Text>
-        </TouchableOpacity>
+  const renderFooter = () => (
+    <View style={styles.filterSearch}>
+      <View style={{ width: "100%", height: "50%" }}>
+        <RoundedButton
+          onPress={() => {
+            updateFilters({ optionsChoosed: false });
+            setTimeout(() => setShowFiltersSheet(false), 500);
+          }}
+        >
+          Filter
+        </RoundedButton>
       </View>
-    );
-  }
+    </View>
+  );
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* <FiltersBottomSheet
-        isVisible={showFiltersSheet}
-        onClose={() => {
-          updateFilters({ optionsChoosed: null });
-          setShowFiltersSheet(false);
-        }}
-        documentType={documentType}
-      /> */}
       <Header
-        title='Documents'
+        title={title}
+        goBack
         renderRightButton={
           <TouchableOpacity
             onPress={() => {
@@ -133,7 +130,7 @@ export const DocumentsScreen = ({
               navigation.navigate(parentNavigator, { screen: nextScreen })
             }
           >
-            <Text style={styles.fabText}>+</Text>
+            <Plus />
           </TouchableOpacity>
         )}
       </View>
@@ -144,27 +141,10 @@ export const DocumentsScreen = ({
           updateFilters({ optionsChoosed: null });
           setShowFiltersSheet(false);
         }}
+        footer={filters.optionsChoosed && renderFooter()}
       >
         <GeneralFilters />
       </CustomBottomSheet>
-      {/* {filters.optionsChoosed && (
-        <View
-          style={{
-            position: "absolute",
-            width: "100%",
-            bottom: 200,
-          }}
-        >
-          <RoundedButton
-            onPress={() => {
-              updateFilters({ optionsChoosed: false });
-              setTimeout(() => setShowFiltersSheet(false), 500);
-            }}
-          >
-            Filter
-          </RoundedButton>
-        </View>
-      )} */}
     </SafeAreaView>
   );
 };

@@ -6,6 +6,12 @@ export const COLORS = {
       600: "#8E91A8",
       900: "#1D2452",
     },
+    red: {
+      900: "#A01132",
+    },
+    secondary: {
+      600: "#6E738F",
+    },
     danger: "#E21C3E",
     blue: {
       100: "#1D2452",
@@ -31,10 +37,30 @@ export const COLORS = {
     inactive: "#999999",
   },
   labels: {
-    approved: "#D4F2DE",
-    rejected: "#FED8DE",
-    draft: "#DEE3ED",
-    pending: "#FBEDD0",
-    cancelled: "#272727",
+    approved: {
+      100: "#D4F2DE",
+      200: "#6AD38E",
+      300: "#005C20",
+    },
+    rejected: {
+      100: "#FED8DE",
+      200: "#F87383",
+      300: "#9B0819",
+    },
+    draft: {
+      100: "#DEE3ED",
+      200: "#999999",
+      300: "#49525A",
+    },
+    pending: {
+      100: "#FBEDD0",
+      200: "#F1C34C",
+      300: "#8E370B",
+    },
+    cancelled: {
+      100: "#272727",
+      200: "#272727",
+      300: "#fff",
+    },
   },
 };

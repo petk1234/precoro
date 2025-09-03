@@ -50,14 +50,12 @@ export const DocumentCard: React.FC<DocumentCardProps> = ({ document }) => {
       .replace(",", "");
     return formattedDate;
   };
+  const statusColor = getStatusColor(document.status);
 
   return (
     <View style={styles.container}>
       <View
-        style={[
-          styles.indicator,
-          { backgroundColor: getStatusColor(document.status) },
-        ]}
+        style={[styles.indicator, { backgroundColor: statusColor?.[200] }]}
       ></View>
       <View style={styles.info}>
         <View style={styles.rowTop}>
@@ -70,10 +68,10 @@ export const DocumentCard: React.FC<DocumentCardProps> = ({ document }) => {
           <View
             style={[
               styles.statusBadge,
-              { backgroundColor: getStatusColor(document.status) },
+              { backgroundColor: statusColor?.[100] },
             ]}
           >
-            <Text style={styles.statusText}>
+            <Text style={[styles.statusText, { color: statusColor?.[300] }]}>
               {getStatusText(document.status)}
             </Text>
           </View>

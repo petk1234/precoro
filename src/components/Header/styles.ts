@@ -26,5 +26,8 @@ export default StyleSheet.create({
   rightItem: {
     width: "15%",
     height: "100%",
+    display: "flex",
+    justifyContent: "center",
+    padding: 10,
   },
 });

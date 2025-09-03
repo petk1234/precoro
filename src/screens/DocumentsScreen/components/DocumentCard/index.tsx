@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text } from "react-native";
 import { Document, DocumentStatus, Statuses } from "../../../../types";
 import styles from "./styles";
 import { COLORS } from "../../../../theme/colors";
@@ -38,7 +38,7 @@ const getStatusText = (status: DocumentStatus) => {
   }
 };
 
-export const DocumentCard: React.FC<DocumentCardProps> = ({ document }) => {
+export const DocumentCard = ({ document }: DocumentCardProps) => {
   const prepareReadableDate = (date: string) => {
     const parsedDate = new Date(date);
     const formattedDate = parsedDate

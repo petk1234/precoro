@@ -27,7 +27,6 @@ const Header = ({
   const navigation = useNavigation();
   const renderGoBack = () => (
     <TouchableOpacity onPress={navigation.goBack}>
-      {" "}
       <Back fill={COLORS.elements.active} />
     </TouchableOpacity>
   );
@@ -40,11 +39,7 @@ const Header = ({
       </TouchableWithoutFeedback>
       <Text style={[styles.title, customStyles && customStyles]}>{title}</Text>
       <TouchableWithoutFeedback>
-        {renderRightButton ? (
-          renderRightButton
-        ) : (
-          <View style={styles.rightItem} />
-        )}
+        <View style={styles.rightItem}>{renderRightButton}</View>
       </TouchableWithoutFeedback>
     </View>
   );

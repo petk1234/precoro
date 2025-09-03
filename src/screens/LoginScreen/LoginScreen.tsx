@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  View,
-  ScrollView,
-  Image,
-  Keyboard,
-  ImageBackground,
-} from "react-native";
+import { View, ScrollView, Keyboard, ImageBackground } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -34,7 +28,7 @@ type LoginFormData = {
   password: string;
 };
 
-export const LoginScreen: React.FC = () => {
+export const LoginScreen = () => {
   const { login, isLoading, error } = useAuth();
 
   const {
@@ -54,63 +48,64 @@ export const LoginScreen: React.FC = () => {
   };
 
   return (
-    <>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <LinearGradient
+    <TouchableWithoutFeedback
+      style={styles.touchable}
+      onPress={Keyboard.dismiss}
+    >
+      <LinearGradient
+        style={styles.container}
+        colors={[COLORS.main.bg.gradient1, COLORS.main.bg.gradient2]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+      >
+        <ImageBackground
           style={styles.container}
-          colors={[COLORS.main.bg.gradient1, COLORS.main.bg.gradient2]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
+          imageStyle={styles.bgImg}
+          source={require("../../../assets/lines-native.png")}
         >
-          <ImageBackground
-            style={styles.container}
-            imageStyle={styles.bgImg}
-            source={require("../../../assets/lines-native.png")}
-          >
-            <ScrollView contentContainerStyle={styles.scrollContainer}>
-              <View style={styles.content}>
-                <View style={styles.logo}>
-                  <LogoExtended />
-                </View>
-                <View style={styles.form}>
-                  <Controller
-                    control={control}
-                    name='email'
-                    render={({ field: { onChange } }) => (
-                      <CustomTextInput
-                        handleChangeText={onChange}
-                        label='Email'
-                        placeholder='mail@gmail.com'
-                        error={errors.email?.message || error}
-                      />
-                    )}
-                  />
-                  <Controller
-                    control={control}
-                    name='password'
-                    render={({ field: { onChange } }) => (
-                      <CustomTextInput
-                        handleChangeText={onChange}
-                        label='Password'
-                        secured
-                        error={errors.password?.message}
-                      />
-                    )}
-                  />
-                  <View style={styles.button}>
-                    <RoundedButton
-                      disabled={isLoading}
-                      onPress={handleSubmit(onSubmit)}
-                    >
-                      Log in
-                    </RoundedButton>
-                  </View>
+          <ScrollView contentContainerStyle={styles.scrollContainer}>
+            <View style={styles.content}>
+              <View style={styles.logo}>
+                <LogoExtended />
+              </View>
+              <View style={styles.form}>
+                <Controller
+                  control={control}
+                  name='email'
+                  render={({ field: { onChange } }) => (
+                    <CustomTextInput
+                      handleChangeText={onChange}
+                      label='Email'
+                      placeholder='mail@gmail.com'
+                      error={errors.email?.message || error}
+                    />
+                  )}
+                />
+                <Controller
+                  control={control}
+                  name='password'
+                  render={({ field: { onChange } }) => (
+                    <CustomTextInput
+                      handleChangeText={onChange}
+                      label='Password'
+                      secured
+                      error={errors.password?.message}
+                    />
+                  )}
+                />
+                <View style={styles.button}>
+                  <RoundedButton
+                    disabled={isLoading}
+                    onPress={handleSubmit(onSubmit)}
+                  >
+                    Log in
+                  </RoundedButton>
                 </View>
               </View>
-            </ScrollView>
-          </ImageBackground>
-        </LinearGradient>
-      </TouchableWithoutFeedback>
-    </>
+            </View>
+          </ScrollView>
+        </ImageBackground>
+      </LinearGradient>
+    </TouchableWithoutFeedback>
   );
 };

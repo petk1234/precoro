@@ -1,6 +1,9 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
+  touchable: {
+    height: "100%",
+  },
   container: {
     flex: 1,
   },

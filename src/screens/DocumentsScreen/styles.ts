@@ -3,7 +3,7 @@ import { COLORS } from "../../theme/colors";
 
 export default StyleSheet.create({
   container: {
-    flex: 1,
+    height: "100%",
     backgroundColor: "#f5f5f5",
   },
   header: {

@@ -1,12 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import {
-  View,
-  Text,
-  FlatList,
-  TouchableOpacity,
-  RefreshControl,
-  SafeAreaView,
-} from "react-native";
+import { View, FlatList, TouchableOpacity, RefreshControl } from "react-native";
 import { Document } from "../../types";
 import { DocumentCard } from "./components/DocumentCard";
 import { StatusesBar } from "./components/StatusesBar";
@@ -20,6 +13,7 @@ import { CustomBottomSheet } from "../../components/CustomBottomSheet";
 import GeneralFilters from "./components/FiltersBottomSheet/components/GeneralFilters";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import RoundedButton from "../../components/RoundedButton";
+import { CustomSafeArea } from "../../components/CustomSafeArea";
 
 export const DocumentsScreen = ({
   documentType,
@@ -34,7 +28,7 @@ export const DocumentsScreen = ({
     []
   );
   const bottomSheetRef = useRef<BottomSheetModal>(null);
-  const flatListRef = useRef(null);
+  const flatListRef = useRef<FlatList>(null);
 
   const { filters, documents, error, updateFilters, refetch } =
     useDocumentsQuery(documentType);
@@ -92,7 +86,7 @@ export const DocumentsScreen = ({
   );
 
   return (
-    <SafeAreaView style={styles.container}>
+    <CustomSafeArea>
       <Header
         title={title}
         goBack
@@ -112,7 +106,7 @@ export const DocumentsScreen = ({
         <FlatList
           ref={flatListRef}
           data={accumulatedDocuments}
-          keyExtractor={(item) => item.idn}
+          keyExtractor={(item: Document) => item.idn + item.status}
           renderItem={({ item }) => (
             <DocumentCard key={item.idn} document={item} />
           )}
@@ -145,6 +139,6 @@ export const DocumentsScreen = ({
       >
         <GeneralFilters />
       </CustomBottomSheet>
-    </SafeAreaView>
+    </CustomSafeArea>
   );
 };

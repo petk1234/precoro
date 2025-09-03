@@ -1,13 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  Alert,
-  ScrollView,
-  KeyboardAvoidingView,
-  Platform,
-  SafeAreaView,
-} from "react-native";
+import { View, Text, Alert, ScrollView } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -20,9 +12,9 @@ import RoundedButton from "../../components/RoundedButton";
 import Locations from "./components/Locations";
 import Departments from "./components/Departments";
 import { useNavigation } from "@react-navigation/native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import styles from "./styles";
 import { useCreateDocumentCreation } from "../../services/mutations/useCreateDocumentMutation";
+import { CustomSafeArea } from "../../components/CustomSafeArea";
 
 const schema = yup.object({
   deliveryDate: yup.string().required("Delivery date is required"),
@@ -57,7 +49,6 @@ export const CreateDocumentScreen = ({
 }: DocumentsListStackParams) => {
   const [isLoading, setIsLoading] = useState(false);
   const navigation = useNavigation();
-  const safeArea = useSafeAreaInsets();
 
   const {
     control,
@@ -106,12 +97,9 @@ export const CreateDocumentScreen = ({
   };
 
   return (
-    <SafeAreaView>
+    <CustomSafeArea>
       <Header goBack title={title} />
-      <KeyboardAvoidingView
-        style={styles.container}
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-      >
+      <View style={styles.container}>
         <ScrollView contentContainerStyle={styles.scrollContainer}>
           <View style={styles.form}>
             <Controller
@@ -190,11 +178,7 @@ export const CreateDocumentScreen = ({
               )}
             />
             <View style={styles.spacer} />
-            <View
-              style={{
-                marginBottom: safeArea.top + 50,
-              }}
-            >
+            <View>
               <RoundedButton
                 disabled={!isValid || isLoading}
                 onPress={handleSubmit(onSubmit)}
@@ -204,7 +188,7 @@ export const CreateDocumentScreen = ({
             </View>
           </View>
         </ScrollView>
-      </KeyboardAvoidingView>
-    </SafeAreaView>
+      </View>
+    </CustomSafeArea>
   );
 };

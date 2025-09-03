@@ -69,7 +69,7 @@ const SpecificFilters = ({ filterType, goBack }: Props) => {
 
   const renderOption = (filterOption: Location | Creator) => (
     <TouchableOpacity
-      key={filterOption.id}
+      key={filterOption.id + filterOption.name}
       onPress={() => handleFilterUpdate(filterOption.id)}
     >
       <View style={styles.rowInternal}>

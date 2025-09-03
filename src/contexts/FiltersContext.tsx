@@ -30,9 +30,7 @@ interface FiltersProviderProps {
   children: ReactNode;
 }
 
-export const FiltersProvider: React.FC<FiltersProviderProps> = ({
-  children,
-}) => {
+export const FiltersProvider = ({ children }: FiltersProviderProps) => {
   const [filters, setFilters] = useState<FilterState>({
     statuses: [],
     locations: [],

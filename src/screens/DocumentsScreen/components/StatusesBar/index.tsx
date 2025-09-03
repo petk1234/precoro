@@ -13,7 +13,7 @@ const statusConfig = [
   { status: DocumentStatus.CANCELLED, label: Statuses.cancelled },
 ];
 
-export const StatusesBar: React.FC = () => {
+export const StatusesBar = () => {
   const { filters, updateFilters } = useFilters();
 
   const toggleStatus = (status: DocumentStatus) => {

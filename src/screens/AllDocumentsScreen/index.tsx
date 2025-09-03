@@ -8,6 +8,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { COLORS } from "../../theme/colors";
 import styles from "./styles";
 import { OrdersScreens, RequisitsScreens } from "../../navigation/config";
+import { CustomSafeArea } from "../../components/CustomSafeArea";
 
 const AllDocumentsScreen = () => {
   const navigation = useNavigation<any>();
@@ -21,7 +22,7 @@ const AllDocumentsScreen = () => {
     );
 
   return (
-    <SafeAreaView style={styles.screen}>
+    <CustomSafeArea customStyles={styles.screen}>
       <LinearGradient
         style={styles.screen}
         colors={[COLORS.main.bg.gradient1, COLORS.main.bg.gradient2]}
@@ -42,7 +43,7 @@ const AllDocumentsScreen = () => {
           />
         </View>
       </LinearGradient>
-    </SafeAreaView>
+    </CustomSafeArea>
   );
 };
 
